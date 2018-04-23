@@ -91,7 +91,7 @@ process_bookmarks(){
 
 # process the folders function
 process_folders(){
-  # execute only when there is an axactly one parameter
+  # execute only when there is an exactly one parameter
   if [ "$#" = 1 ]; then
     # SQL query - folders
     sql_folder_query="select id from moz_bookmarks where parent=$1 and type=2 and (select count(*) from moz_bookmarks as b2 where b2.parent=moz_bookmarks.id)>0"
