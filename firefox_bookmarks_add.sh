@@ -35,13 +35,13 @@ process_bookmarks(){
     folder_id=$(echo $sql_folder_result | awk -F^ '{print $1}')
     folder_title=$(echo $sql_folder_result | awk -F^ '{print $2}')
 
+    # special case for empty title
     if [ -z "$folder_path" ]; then
-      folder_path="$folder_title"
+      folder_path="floccus:>$folder_title"
     else
-      folder_path="${folder_title}>${folder_path}"
+      folder_path="${folder_path}>${folder_title}"
     fi
   done
-  folder_path="floccus:>${folder_path}"
 
 
   # process bookmarks
