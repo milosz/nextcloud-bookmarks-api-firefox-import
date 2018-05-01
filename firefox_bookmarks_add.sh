@@ -3,14 +3,13 @@
 # https://blog.sleeplessbeastie.eu/
 
 # path to the sqlite3 binary
-sqlite_path=`which sqlite3`
+sqlite_path=$(which sqlite3)
 
 # sqlite3 parameters (define separator character)
 sqlite_params="-separator ^"
 
 # path to the places.sqlite database
-bookmarks_database=`ls ~/.mozilla/firefox/*.default/places.sqlite`
-#bookmarks_database="places.sqlite"
+bookmarks_database=$(ls ~/.mozilla/firefox/*.default/places.sqlite)
 
 # SQL query 
 sql_query="select p.title, p.url from moz_places as p where p.hidden=0 order by last_visit_date desc limit 10"
@@ -150,4 +149,6 @@ if [ "${param_nextcloud_address_defined}" = true ] && \
 
   # process bookmarks for root element
   process_bookmarks "$root_element"
+else
+  usage
 fi
